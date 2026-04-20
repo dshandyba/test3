@@ -26,6 +26,15 @@ jobs:
       - name: Lint with flake8
         run: flake8 app.py test_app.py --max-line-length=120
 
+      - name: Lint with Ruff
+        run: ruff check .
+
+      - name: Check formatting
+        run: black --check .
+
+      - name: Run tests with coverage
+        run: pytest --cov --cov-fail-under=70
+
       - name: Run tests
         run: pytest -v
 
